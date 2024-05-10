@@ -10,7 +10,9 @@ Example: run_client.sh --project pmi-drc-api-test --account dan.rodney@pmi-ops.o
 "
 
 REPO_ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
-export PYTHONPATH=${PYTHONPATH}:${REPO_ROOT_DIR}/rdr_common
+REPO_ROOT_DIR_P="$(dirname "${REPO_ROOT_DIR}")"
+export PYTHONPATH=${PYTHONPATH}:${REPO_ROOT_DIR}/rdr_common:${REPO_ROOT_DIR_P}
+echo $PYTHONPATH
 
 while true; do
   case "$1" in
