@@ -26,7 +26,7 @@ from rdr_service.rdr_client.client import Client
 
 def main():
     client = Client()
-    awardee = os.getenv('AWARDEE_ID')  # Change to the awardee ID you're requesting data for.
+    awardee = os.getenv('ALLOFUS_AWARDEE_ID')
     sync_time = 300  # Number of seconds before next sync.
     response = client.request_json(
         "ParticipantSummary?_count=1000&_sync=true&_sort=lastModified" "&awardee={}".format(awardee), "GET"
