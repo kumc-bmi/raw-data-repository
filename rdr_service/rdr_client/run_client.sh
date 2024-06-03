@@ -1,8 +1,11 @@
+#!/bin/bash
+
 # Gets credentials and runs a Python script that connects to the instance for a project;
 # deletes credentials when done.
 #
 # The user must be on the ACL for the service account used with the client. If --service_account
 # is not specified, the configurator service account for the environment is used.
+set -eo pipefail
 
 USAGE="Usage: run_client.sh --project <PROJECT> --account <ACCOUNT> [--service_account <ACCOUNT>] <SCRIPT> [... extra args]
 
@@ -43,8 +46,8 @@ then
   echo "Getting credentials for ${PROJECT}..."
   source ${REPO_ROOT_DIR}/tools/auth_setup.sh
   echo "Running script..."
-  echo python $SCRIPT --creds_file ${CREDS_FILE} --instance ${INSTANCE} --project ${PROJECT} $@
-  python $SCRIPT --creds_file ${CREDS_FILE} --instance ${INSTANCE} --project ${PROJECT} $@
+  echo python $SCRIPT --creds_file ${CREDS_FILE} --instance ${ALLOFUS_INSTANCE} --project ${PROJECT} $@
+  python $SCRIPT --creds_file ${CREDS_FILE} --instance ${ALLOFUS_INSTANCE} --project ${PROJECT} $@
 else
   python $SCRIPT --instance http://localhost:8080 $@
 fi

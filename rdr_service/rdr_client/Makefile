@@ -11,6 +11,8 @@
 	which pip3 && which python3 && python3 --version
 
 config_check:
+	# print date
+	date 
 	# make sure you are calling the function from institute network(ACL)
 	curl ipinfo.io/ip
 
